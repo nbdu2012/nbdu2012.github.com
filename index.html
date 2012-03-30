@@ -9,8 +9,7 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="github + Octopress 发布 配置个人github账号 登陆github，创建一个个人账号。这里叫做：nbdu2012。 然后回到ubuntu或者Mac里面，仍然是在终端里面，输入： [[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yoursite.com">
+  <link rel="canonical" href="http://nbdu2012.github.com">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -50,7 +49,7 @@
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:yoursite.com" />
+    <input type="hidden" name="q" value="site:nbdu2012.github.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -94,7 +93,63 @@
   </header>
 
 
-  <div class="entry-content">
+  <div class="entry-content"><h1>github + Octopress 发布</h1>
+
+<h2>配置个人github账号</h2>
+
+<p>登陆github，创建一个个人账号。这里叫做：nbdu2012。</p>
+
+<p>然后回到ubuntu或者Mac里面，仍然是在终端里面，输入：</p>
+
+<pre><code>[[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa
+</code></pre>
+
+<p>按照默认提示一路确认，生成密钥之后，将生成的信息复制到github页面中，如下所示：</p>
+
+<pre><code>[[ -f ~/.ssh/id_rsa.pub ]] &amp;&amp; cat ~/.ssh/id_rsa.pub | xclip
+</code></pre>
+
+<p>然后在浏览器中打开页面：</p>
+
+<p><a href="https://github.com/account/ssh">https://github.com/account/ssh</a></p>
+
+<p>点击，Add another public key，粘贴前面步骤复制的信息，请格外注意，<strong>不要在Title中填写内容</strong>，直接将复制的内容粘贴到Key中，然后点击：Add Key即可。</p>
+
+<h2>创建github项目</h2>
+
+<p>然后在浏览器中打开页面：</p>
+
+<p><a href="https://github.com/nbdu2012">https://github.com/nbdu2012</a></p>
+
+<p>点击，New repository, 创建一个新项目，注意
+<strong> 项目名称必须是 nbdu2012.github.com </strong>(后面有.github.com)</p>
+
+<h2>下载 octopress</h2>
+
+<p>先从源中克隆 octopress 文件</p>
+
+<pre><code>mkdir ~/dev/
+git clone git://github.com/imathis/octopress.git    nbdu2012.github.com
+cd ~/dev/nbdu2012.github.com
+</code></pre>
+
+<p>必须先安装好rvm, 见…</p>
+
+<p>修改默认的.rvmrc文件的内容为：</p>
+
+<pre><code>rvm use 1.9.2@octopress
+</code></pre>
+
+<p>安装相应的gem:</p>
+
+<pre><code>gem install bundle
+bundle update
+</code></pre>
+
+<p>然后生成模版文件：</p>
+
+<pre><code>rake install
+</code></pre>
 </div>
   
   

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2012-03-30T10:14:22+08:00</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://nbdu2012.github.com/atom.xml" rel="self"/>
+  <link href="http://nbdu2012.github.com/"/>
+  <updated>2012-03-30T18:05:57+08:00</updated>
+  <id>http://nbdu2012.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
     
@@ -15,10 +15,66 @@
   
   <entry>
     <title type="html"><![CDATA[入住github]]></title>
-    <link href="http://yoursite.com/blog/2012/03/30/ru-zhu-github/"/>
+    <link href="http://nbdu2012.github.com/blog/2012/03/30/ru-zhu-github/"/>
     <updated>2012-03-30T10:09:00+08:00</updated>
-    <id>http://yoursite.com/blog/2012/03/30/ru-zhu-github</id>
-    <content type="html"><![CDATA[
+    <id>http://nbdu2012.github.com/blog/2012/03/30/ru-zhu-github</id>
+    <content type="html"><![CDATA[<h1>github + Octopress 发布</h1>
+
+<h2>配置个人github账号</h2>
+
+<p>登陆github，创建一个个人账号。这里叫做：nbdu2012。</p>
+
+<p>然后回到ubuntu或者Mac里面，仍然是在终端里面，输入：</p>
+
+<pre><code>[[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa
+</code></pre>
+
+<p>按照默认提示一路确认，生成密钥之后，将生成的信息复制到github页面中，如下所示：</p>
+
+<pre><code>[[ -f ~/.ssh/id_rsa.pub ]] &amp;&amp; cat ~/.ssh/id_rsa.pub | xclip
+</code></pre>
+
+<p>然后在浏览器中打开页面：</p>
+
+<p><a href="https://github.com/account/ssh">https://github.com/account/ssh</a></p>
+
+<p>点击，Add another public key，粘贴前面步骤复制的信息，请格外注意，<strong>不要在Title中填写内容</strong>，直接将复制的内容粘贴到Key中，然后点击：Add Key即可。</p>
+
+<h2>创建github项目</h2>
+
+<p>然后在浏览器中打开页面：</p>
+
+<p><a href="https://github.com/nbdu2012">https://github.com/nbdu2012</a></p>
+
+<p>点击，New repository, 创建一个新项目，注意
+<strong> 项目名称必须是 nbdu2012.github.com </strong>(后面有.github.com)</p>
+
+<h2>下载 octopress</h2>
+
+<p>先从源中克隆 octopress 文件</p>
+
+<pre><code>mkdir ~/dev/
+git clone git://github.com/imathis/octopress.git    nbdu2012.github.com
+cd ~/dev/nbdu2012.github.com
+</code></pre>
+
+<p>必须先安装好rvm, 见…</p>
+
+<p>修改默认的.rvmrc文件的内容为：</p>
+
+<pre><code>rvm use 1.9.2@octopress
+</code></pre>
+
+<p>安装相应的gem:</p>
+
+<pre><code>gem install bundle
+bundle update
+</code></pre>
+
+<p>然后生成模版文件：</p>
+
+<pre><code>rake install
+</code></pre>
 ]]></content>
   </entry>
   
